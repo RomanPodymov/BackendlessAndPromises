@@ -5,11 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "BackendlessAndPromises",
-    platforms: [
-        .iOS(.v12),
-        .tvOS(.v12),
-        .macOS(.v10_13)
-    ],
     products: [
         .library(
             name: "BackendlessAndPromises",

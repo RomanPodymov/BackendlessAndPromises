@@ -7,10 +7,27 @@
 //
 
 import XCTest
+import SwiftSDK
 import BackendlessAndPromises
 
 final class BackendlessAndPromisesTests: XCTestCase {
-    func test() {
+    func testIsValidUserToken() {
+        let expectation = expectation(description: "")
 
+        Backendless.shared.userService.isValidUserToken(on: .main).always {
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 10)
+    }
+
+    func testLogin() {
+        let expectation = expectation(description: "")
+
+        Backendless.shared.userService.login(identity: "", password: "", on: .main).always {
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 10)
     }
 }
