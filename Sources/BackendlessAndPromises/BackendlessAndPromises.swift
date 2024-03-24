@@ -11,11 +11,15 @@ import Foundation
 import Promises
 import SwiftSDK
 
+public enum BackendlessAndPromisesError: Error {
+    case nilSelf
+}
+
 public extension MapDrivenDataStore {
     func removeById(objectId: String, on queue: DispatchQueue = .promises) -> Promise<Int> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             removeById(objectId: objectId) {
                 onSuccess($0)
@@ -28,7 +32,7 @@ public extension MapDrivenDataStore {
     func getObjectCount(on queue: DispatchQueue = .promises) -> Promise<Int> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             getObjectCount {
                 onSuccess($0)
@@ -41,7 +45,7 @@ public extension MapDrivenDataStore {
     func getObjectCount(queryBuilder: DataQueryBuilder, on queue: DispatchQueue = .promises) -> Promise<Int> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             getObjectCount(queryBuilder: queryBuilder) {
                 onSuccess($0)
@@ -54,7 +58,7 @@ public extension MapDrivenDataStore {
     func find(queryBuilder: DataQueryBuilder, on queue: DispatchQueue = .promises) -> Promise<[[String: Any]]> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             find(queryBuilder: queryBuilder) {
                 onSuccess($0)
@@ -67,7 +71,7 @@ public extension MapDrivenDataStore {
     func deepSave(entity: [String: Any], on queue: DispatchQueue = .promises) -> Promise<[String: Any]> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             deepSave(entity: entity) {
                 onSuccess($0)
@@ -82,7 +86,7 @@ public extension UserService {
     func isValidUserToken(on queue: DispatchQueue = .promises) -> Promise<Bool> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             isValidUserToken {
                 onSuccess($0)
@@ -95,7 +99,7 @@ public extension UserService {
     func login(identity: String, password: String, on queue: DispatchQueue = .promises) -> Promise<BackendlessUser> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             login(
                 identity: identity,
@@ -112,7 +116,7 @@ public extension UserService {
     func registerUser(user: BackendlessUser, on queue: DispatchQueue = .promises) -> Promise<BackendlessUser> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             registerUser(
                 user: user,
@@ -129,7 +133,7 @@ public extension UserService {
     func restorePassword(identity: String, on queue: DispatchQueue = .promises) -> Promise<Void> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             restorePassword(
                 identity: identity,
@@ -146,7 +150,7 @@ public extension UserService {
     func update(user: BackendlessUser, on queue: DispatchQueue = .promises) -> Promise<BackendlessUser> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             update(
                 user: user,
@@ -162,7 +166,7 @@ public extension UserService {
     func logout(on queue: DispatchQueue = .promises) -> Promise<Void> {
         .init(on: queue) { [weak self] onSuccess, onError in
             guard let self else {
-                throw NSError()
+                throw BackendlessAndPromisesError.nilSelf
             }
             logout {
                 onSuccess(())
