@@ -76,4 +76,22 @@ public extension MapDrivenDataStore {
             }
         }
     }
+
+    func addRelation(
+        columnName: String,
+        parentObjectId: String,
+        childrenObjectIds: [String],
+        on queue: DispatchQueue = .promises
+    ) -> Promise<Int> {
+        .init(on: queue) { [weak self] onSuccess, onError in
+            guard let self else {
+                throw BackendlessAndPromisesError.nilSelf
+            }
+            addRelation(columnName: columnName, parentObjectId: parentObjectId, childrenObjectIds: childrenObjectIds) {
+                onSuccess($0)
+            } errorHandler: {
+                onError($0)
+            }
+        }
+    }
 }
