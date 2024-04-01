@@ -30,10 +30,10 @@
     {
       "identity" : "swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Backendless/Swift-SDK.git",
+      "location" : "https://github.com/RomanPodymov/Swift-SDK.git",
       "state" : {
-        "revision" : "19f236cd4d40926fc0ba21262fd9264a9e842929",
-        "version" : "7.0.4"
+        "branch" : "7.0.4",
+        "revision" : "19f236cd4d40926fc0ba21262fd9264a9e842929"
       }
     }
   ],

@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/google/promises.git", from: "2.3.1"),
-        .package(url: "https://github.com/Backendless/Swift-SDK.git", from: "7.0.4"),
+        .package(url: "https://github.com/RomanPodymov/Swift-SDK.git", branch: "master"),
     ],
     targets: [
         .target(
