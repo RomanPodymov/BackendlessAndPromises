@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RomanPodymov/Swift-SDK.git",
       "state" : {
-        "branch" : "7.0.4",
-        "revision" : "19f236cd4d40926fc0ba21262fd9264a9e842929"
+        "branch" : "master",
+        "revision" : "625384a4f06404a0fb459763cdd959092291fe41"
       }
     }
   ],
