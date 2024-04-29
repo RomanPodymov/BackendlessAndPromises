@@ -35,4 +35,30 @@ public extension FileService {
             }
         }
     }
+
+    func listing(
+        path: String,
+        pattern: String,
+        recursive: Bool,
+        pageSize: Int,
+        offset: Int,
+        on queue: DispatchQueue = .promises
+    ) -> Promise<[BackendlessFileInfo]> {
+        .init(on: queue) { [weak self] onSuccess, onError in
+            guard let self else {
+                throw BackendlessAndPromisesError.nilSelf
+            }
+            self.listing(
+                path: path,
+                pattern: pattern,
+                recursive: recursive,
+                pageSize: pageSize,
+                offset: offset
+            ) {
+                onSuccess($0)
+            } errorHandler: {
+                onError($0)
+            }
+        }
+    }
 }
